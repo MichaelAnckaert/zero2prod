@@ -33,7 +33,7 @@ pub fn get_configuration() -> Result<Settings, config::ConfigError> {
     let builder = config::Config::builder().add_source(config::File::with_name("configuration"));
 
     match builder.build() {
-        Ok(config) => return config.try_deserialize::<Settings>(),
-        Err(e) => return Err(e),
+        Ok(config) => config.try_deserialize::<Settings>(),
+        Err(e) => Err(e),
     }
 }
